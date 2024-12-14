@@ -11,29 +11,28 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class MainActivity extends AppCompatActivity {
+public class ClearActivity extends AppCompatActivity {
 
-    private ImageView startBtn;
+    private ImageView backBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_clear);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        startBtn = findViewById(R.id.start_button);
-        startBtn.setOnClickListener(new View.OnClickListener() {
+        backBtn = findViewById(R.id.back_button);
+        backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Intent intent = GameActivity.newIntent(MainActivity.this);
-                startActivity(intent);
-
+                //Intent intent = MainActivity.newIntent(ClearActivity.this);
+                //startActivity(intent);
             }
         });
     }

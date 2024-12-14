@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">YieArShampoo</string>
+<string name="app_name">YieArShampoo</string>
+<string name="clear_result">CLEAR!</string>
 </resources>

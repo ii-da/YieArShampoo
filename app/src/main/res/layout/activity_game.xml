@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/game_bg"
+    tools:context=".GameActivity">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/time_bg"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"/>
+
+    <TextView
+        android:id="@+id/timer_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="64sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"/>
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="残り時間"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="30dp"/>
+    
+    <ImageView
+        android:layout_width="393dp"
+        android:layout_height="409dp"
+        android:src="@drawable/shampoo_image1"
+        android:layout_gravity="center"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="70dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/time_bg"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="175dp"/>
+
+    <TextView
+        android:id="@+id/counter_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="64sp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="175dp"/>
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="タップ数"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:layout_gravity="bottom"
+        android:layout_marginLeft="60dp"
+        android:layout_marginBottom="210dp"/>
+
+    <ImageView
+        android:id="@+id/tap_button"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/tap_btn"
+        android:layout_gravity="bottom|center"
+        android:layout_marginBottom="10dp"/>
+
+</FrameLayout>
