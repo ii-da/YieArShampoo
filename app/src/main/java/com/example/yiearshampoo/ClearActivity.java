@@ -1,7 +1,9 @@
 package com.example.yiearshampoo;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -13,7 +15,13 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class ClearActivity extends AppCompatActivity {
 
+    private static final String KEY_TAP_COUNT = "key_tap_count";
     private ImageView backBtn;
+    public static Intent newIntent(Context context, int count) {
+        Intent intent = new Intent(context, ClearActivity.class);
+        intent.putExtra(KEY_TAP_COUNT, count);
+        return intent;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,5 +43,8 @@ public class ClearActivity extends AppCompatActivity {
                 //startActivity(intent);
             }
         });
+        int tapCount = getIntent().getIntExtra(KEY_TAP_COUNT, -1);
+
+        Log.d("tag", "tapcount = " + tapCount);
     }
 }
