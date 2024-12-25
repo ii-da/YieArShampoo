@@ -17,6 +17,8 @@ public class ClearActivity extends AppCompatActivity {
 
     private static final String KEY_TAP_COUNT = "key_tap_count";
     private ImageView backBtn;
+    private ImageView clearImage;
+
     public static Intent newIntent(Context context, int count) {
         Intent intent = new Intent(context, ClearActivity.class);
         intent.putExtra(KEY_TAP_COUNT, count);
@@ -35,16 +37,27 @@ public class ClearActivity extends AppCompatActivity {
         });
 
         backBtn = findViewById(R.id.back_button);
+        clearImage = findViewById(R.id.clear_image);
+
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                //Intent intent = MainActivity.newIntent(ClearActivity.this);
-                //startActivity(intent);
+                Intent intent = MainActivity.newIntent(ClearActivity.this);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
             }
         });
         int tapCount = getIntent().getIntExtra(KEY_TAP_COUNT, -1);
 
         Log.d("tag", "tapcount = " + tapCount);
+
+        if (20 <= tapCount && tapCount < 40) {
+           clearImage.setImageResource(R.drawable.clear_image1);
+        } else if (40 <= tapCount) {
+            clearImage.setImageResource(R.drawable.clear_image2);
+        } else {
+            clearImage.setImageResource(R.drawable.clear_image3);
+        }
     }
 }

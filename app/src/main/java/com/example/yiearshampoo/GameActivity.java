@@ -1,5 +1,9 @@
 package com.example.yiearshampoo;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,6 +24,11 @@ public class GameActivity extends AppCompatActivity {
     private TextView timerTextView;
     private CountDownTimer timer;
     private ImageView tapButton;
+    private ImageView shampoo;
+    private View actionPunch;
+    private View actionKick;
+    private AnimatorSet punchAnimatorSet;
+    private AnimatorSet kickAnimatorSet;
     private int count = 0;
     private static final int DEFAULT_TIMER_VALUE = 10;
     private static final long TOTAL_TIME = DEFAULT_TIMER_VALUE * 1000;
@@ -45,12 +54,20 @@ public class GameActivity extends AppCompatActivity {
         counterTextView = findViewById(R.id.counter_text);
         timerTextView = findViewById(R.id.timer_text);
         tapButton = findViewById(R.id.tap_button);
+        shampoo = findViewById(R.id.shampoo);
+        actionPunch = findViewById(R.id.action_punch);
+        actionKick = findViewById(R.id.action_kick);
+
+        punchActionSetting();
+        // kickActionSetting();
 
         tapButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String countStr = String.valueOf(++count);
                 counterTextView.setText(countStr);
+                punchAnimatorSet.start();
+                shampoo.setImageResource(R.drawable.shampoo_image2);
 
             }
         });
@@ -64,6 +81,29 @@ public class GameActivity extends AppCompatActivity {
         super.onDestroy();
         timer.cancel();
         timer = null;
+    }
+
+    private void punchActionSetting() {
+        ObjectAnimator moveRight = ObjectAnimator.ofFloat(actionPunch, "translationX", -1000f, 0f);
+        moveRight.setDuration(300);
+        ObjectAnimator moveUp = ObjectAnimator.ofFloat(actionPunch, "translationY", 1000f, 0f);
+        moveUp.setDuration(300);
+        punchAnimatorSet = new AnimatorSet();
+        punchAnimatorSet.playTogether(moveRight, moveUp);
+        punchAnimatorSet.addListener(new AnimatorListenerAdapter() {
+
+            @Override
+            public void onAnimationStart(Animator animation) {
+                super.onAnimationStart(animation);
+                actionPunch.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+                actionPunch.setVisibility(View.GONE);
+            }
+        });
     }
 
     private void initTimer() {
